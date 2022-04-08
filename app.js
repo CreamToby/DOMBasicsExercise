@@ -5,7 +5,8 @@ const xMen = document.getElementById(`x-men`);
 const centered = document.getElementsByClassName(`center`);
 
 // 3. 
-const batman = document.querySelector(`div`);
+// const batman = document.querySelector(`div`);
+const batman = document.querySelector(`#batman`);
 
 // 4. 
 const h3s = document.querySelectorAll(`h3`);
@@ -18,9 +19,11 @@ h1.innerText = `The Best Animated Superhero TV Shows Ever!`;
 
 // 6a. 
 const honorableMentions = document.getElementById(`honorable-mentions`);
+// const honorableMentions = document.querySelector(`#honorable-mentions`);
 
 // 6b. 
-honorableMentions.innerHTML = `OTHER GREAT SHOWS`;
+// honorableMentions.innerHTML = `OTHER GREAT SHOWS`;
+honorableMentions.innerHTML = `<p>OTHER GREAT SHOWS</p>`;
 
 // 7a. 
 const aTag = document.querySelector(`a`);
@@ -31,6 +34,7 @@ aTag.href = `https://fandomwire.com/15-greatest-animated-superhero-shows-ever-ma
 // 8. 
 h1.classList.add(`background`);
 h1.classList.add(`text-color`);
+// h1.classList.add(`background`, `text-color`);
 
 // 9. 
 h1.classList.remove(`background`);
@@ -66,13 +70,53 @@ const divs = document.querySelectorAll(`div`);
 for (d of divs) {
     d.classList.toggle(`background`);
 }
+// or
+
+divs.forEach((div) => {
+    div.classList.toggle(`background`);
+})
+// or
+
+document.querySelectorAll(`div`).forEach(function(elem){
+    elem.classList.toggle(`background`);
+})
 
 // 14a. 
-const avengers = ["Forever", "Fight", "As", "One", "AVENGERS", "ASSEMBLE!"];
+const avengers = [
+    "Forever", 
+    "Fight",
+    "As", 
+    "One", 
+    "AVENGERS", 
+    "ASSEMBLE!"];
 
 // 14b. 
-const span = document.createElement(`span`);
-span.prepend(avengers);
-for(let i = 0; i < avengers.length; i++) {
-    body.append(span);
+// const span = document.createElement(`span`);
+// span.prepend(avengers);
+// for(let i = 0; i < avengers.length; i++) {
+//     body.append(span);
+// }
+
+// or
+
+const newRay = document.createElement(`span`);
+function adding (a){
+    for(i=0; i<a.length; i++){
+        newRay.innerText += a[i]+ ` `;
+    }
+    body.append(newRay);
+}
+adding(avengers);
+
+// or
+for (a of avengers){
+    body.append(a + ` `)
+}
+
+// or
+
+for (item of avengers){
+    const newSpan = document.createElement(`span`);
+    newSpan.innerText = item;
+    body.insertAdjacentElement(`beforeend`, newSpan);
 }
